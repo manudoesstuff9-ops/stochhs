@@ -1,0 +1,42 @@
+i[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "quantresearch"
+version = "0.1.0"
+description = "Research-grade Bayesian Quantitative Portfolio Allocation"
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "MIT" }
+authors = [
+    { name = "Manu" }
+]
+
+dependencies = [
+    "numpy",
+    "pandas",
+    "scipy",
+    "matplotlib",
+    "plotly",
+    "scikit-learn",
+    "statsmodels",
+    "numba",
+    "sympy",
+    "yfinance",
+    "pymc",
+    "arviz",
+    "particles",
+    "cvxpy",
+]
+
+[tool.black]
+line-length = 88
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

@@ -1,0 +1,22 @@
+QuantResearch/
+│
+├── .venv/
+├── data/
+│   ├── raw/
+│   └── processed/
+├── notebooks/
+├── src/
+│   ├── particle_filter/
+│   ├── pmmh/
+│   ├── hdp_hmm/
+│   ├── bandits/
+│   ├── backtesting/
+│   └── utils/
+├── reports/
+├── figures/
+├── tests/
+├── requirements.txt
+├── README.md
+└── .gitignore
+
+
