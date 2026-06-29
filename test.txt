@@ -1,0 +1,257 @@
+QuantResearch Master TODO List
+Phase 0 — Project Setup
+ Initialize Git repository
+ Configure Python environment
+ Configure pyproject.toml
+ Configure requirements.txt
+ Configure .gitignore
+ Create folder structure
+ Configure logging
+ Configure YAML configuration system
+ Configure testing framework
+ Configure formatter (Black)
+ Configure linter (Ruff)
+ Configure README
+ Initial Git commit
+Phase 1 — Mathematics Foundation
+Statistics
+ Expectation
+ Variance
+ Standard Deviation
+ Covariance
+ Correlation
+ Joint Distribution
+ Marginal Distribution
+ Conditional Distribution
+ Bayes Rule
+ Entropy
+ Cross Entropy
+ KL Divergence
+Probability Distributions
+ Uniform
+ Gaussian
+ Multivariate Gaussian
+ Bernoulli
+ Beta
+ Dirichlet
+ Half Normal
+ Inverse Wishart
+ Normal-Inverse-Wishart
+Sampling
+ Uniform Sampling
+ Gaussian Sampling
+ Box Muller
+ Inverse Transform Sampling
+ Importance Sampling
+ Rejection Sampling
+Phase 2 — Financial Mathematics
+ Simple Returns
+ Log Returns
+ Rolling Returns
+ Moving Average
+ Exponential Moving Average
+ Rolling Volatility
+ Annualized Return
+ Annualized Volatility
+ Covariance Matrix
+ Correlation Matrix
+ Sharpe Ratio
+ Sortino Ratio
+ Calmar Ratio
+ Maximum Drawdown
+ Value at Risk
+ Conditional Value at Risk
+Phase 3 — Stochastic Processes
+ Random Walk
+ Brownian Motion
+ Wiener Process
+ Geometric Brownian Motion
+ Ornstein-Uhlenbeck Process
+ Jump Diffusion
+ Heston Model
+ Stochastic Volatility Model
+Phase 4 — Data Layer
+ Download Market Data
+ Load CSV Files
+ Data Cleaning
+ Missing Value Handling
+ Date Alignment
+ Feature Engineering
+ Return Calculation
+ Synthetic Data Generation
+ Save Processed Data
+Phase 5 — State Space Models
+ Observation Equation
+ Transition Equation
+ State Simulation
+ Observation Simulation
+ Likelihood Function
+ Prediction
+ Filtering
+ Smoothing
+Phase 6 — Kalman Filter Family
+ Kalman Filter
+ Extended Kalman Filter
+ Unscented Kalman Filter
+ Benchmark Kalman Filters
+Phase 7 — Hidden Markov Models
+ Forward Algorithm
+ Backward Algorithm
+ Forward-Backward
+ Baum-Welch
+ Viterbi
+ Gaussian HMM
+ Sticky HMM
+ HDP-HMM
+Phase 8 — Sequential Monte Carlo
+ Bootstrap Particle Filter
+ Sequential Importance Sampling
+ Sequential Importance Resampling
+ Auxiliary Particle Filter
+ Adaptive Particle Filter
+ Rao-Blackwellized Particle Filter
+ Regularized Particle Filter
+ Particle Smoothing
+Phase 9 — Particle MCMC
+ Metropolis Hastings
+ Gibbs Sampling
+ PMMH
+ Particle Gibbs
+ SMC²
+Phase 10 — Bayesian Nonparametrics
+ Dirichlet Process
+ Hierarchical Dirichlet Process
+ Stick Breaking
+ Chinese Restaurant Process
+ Infinite HMM
+Phase 11 — Gaussian Processes
+ Gaussian Process Regression
+ Kernel Functions
+ RBF Kernel
+ Expected Improvement
+ Bayesian Optimization
+Phase 12 — Online Learning
+ Recursive Bayesian Update
+ Bayesian Linear Regression
+ Forgetting Factors
+ Concept Drift
+ Page-Hinkley Test
+Phase 13 — Reinforcement Learning
+ Multi Armed Bandits
+ ε-Greedy
+ UCB
+ LinUCB
+ Thompson Sampling
+ Contextual Thompson Sampling
+Phase 14 — Forecasting Models
+ Linear Regression
+ Bayesian Linear Regression
+ ARIMA
+ GARCH
+ Particle Filter Forecasting
+ LSTM
+ Transformer
+ Bayesian Neural Network
+ Deep Ensembles
+ Monte Carlo Dropout
+Phase 15 — Portfolio Optimization
+ Equal Weight
+ Mean Variance
+ Risk Parity
+ Kelly Criterion
+ Fractional Kelly
+ CVaR Optimization
+ Black-Litterman
+ Bayesian Portfolio Optimization
+Phase 16 — Strategy Layer
+ Buy & Hold
+ Momentum
+ Mean Reversion
+ Volatility Targeting
+ Risk Parity Strategy
+ Kelly Strategy
+Phase 17 — Backtesting Engine
+ Portfolio Class
+ Position Class
+ Broker Class
+ Transaction Costs
+ Slippage
+ Order Execution
+ Equity Curve
+ Cash Management
+Phase 18 — Evaluation
+ RMSE
+ Log Likelihood
+ Negative Log Likelihood
+ ESS
+ Runtime Benchmark
+ Memory Benchmark
+ Regret
+ Cumulative Regret
+ Posterior Variance
+ Posterior Predictive Uncertainty
+Phase 19 — Visualization
+ Price Charts
+ Return Charts
+ Volatility Charts
+ Particle Cloud
+ Weight Distribution
+ Posterior Distribution
+ Regime Visualization
+ Equity Curve
+ Drawdown Plot
+ Portfolio Allocation Plot
+ Performance Dashboard
+Phase 20 — High Performance Computing
+ Vectorization
+ Numba Acceleration
+ JAX Implementation
+ JIT Compilation
+ Parallel Processing
+ Performance Benchmarking
+Phase 21 — Pipeline Integration
+ Configuration Loader
+ Data Pipeline
+ Feature Pipeline
+ State Space Pipeline
+ Particle Filter Pipeline
+ PMMH Pipeline
+ Regime Detection Pipeline
+ Thompson Sampling Pipeline
+ Portfolio Pipeline
+ Backtesting Pipeline
+ Evaluation Pipeline
+ Visualization Pipeline
+Phase 22 — Automation
+ download_data.py
+ generate_synthetic_data.py
+ train_models.py
+ benchmark.py
+ run_backtest.py
+ run_pipeline.py
+ generate_report.py
+Phase 23 — Documentation
+ Theory Documentation
+ Mathematical Derivations
+ Implementation Notes
+ API Documentation
+ Examples
+ Notebooks
+ README
+ Architecture Diagram
+Phase 24 — Testing
+ Unit Tests
+ Integration Tests
+ Pipeline Tests
+ Performance Tests
+ Regression Tests
+Phase 25 — Final Polish
+ Profile performance
+ Optimize bottlenecks
+ Clean codebase
+ Add type hints everywhere
+ Final documentation pass
+ Final benchmarks
+ Final figures
+ Final report
+ GitHub release (v1.0)
