@@ -255,3 +255,543 @@ Phase 25 — Final Polish
  Final figures
  Final report
  GitHub release (v1.0)
+
+
+Think about it:
+
+> A particle filter without data is just an algorithm.
+> 
+> A particle filter with a well-designed data pipeline becomes part of a research system.
+
+So I would build it in this order.
+
+---
+
+# Phase 1 — Data Layer (Build the foundation)
+
+**Goal:** Everything downstream should receive clean, standardized data.
+
+### scripts/
+
+Build
+
+```
+download_data.py
+generate_synthetic_data.py
+```
+
+---
+
+### src/data/
+
+Implement
+
+```
+loader.py
+
+preprocessing.py
+
+returns.py
+
+simulation.py
+```
+
+Flow
+
+```
+Yahoo Finance
+        │
+        ▼
+CSV
+        │
+        ▼
+Load DataFrame
+        │
+        ▼
+Clean Data
+        │
+        ▼
+Generate Returns
+        │
+        ▼
+Processed Dataset
+```
+
+Checkpoint
+
+```
+One command downloads data
+
+↓
+
+Creates processed dataset
+
+↓
+
+Saves to data/processed
+```
+
+Now you have something every other module can use.
+
+---
+
+# Phase 2 — Mathematical Models
+
+Now write the models.
+
+```
+GBM
+
+OU
+
+Jump Diffusion
+
+Heston
+
+State Space Models
+```
+
+These don't know anything about particle filters.
+
+They only answer
+
+> "How does the market evolve?"
+
+Output
+
+```
+Price
+
+Return
+
+Hidden Volatility
+```
+
+Checkpoint
+
+```
+Synthetic market generator works.
+```
+
+---
+
+# Phase 3 — Core Inference
+
+Now implement
+
+```
+Kalman
+
+↓
+
+EKF
+
+↓
+
+UKF
+
+↓
+
+Particle Filter
+
+↓
+
+PMMH
+```
+
+Notice something important.
+
+The input is now always
+
+```
+Processed Data
+```
+
+or
+
+```
+Synthetic Data
+```
+
+No fake arrays inside notebooks anymore.
+
+---
+
+# Phase 4 — Intelligence Layer
+
+Now the project becomes interesting.
+
+Implement
+
+```
+Gaussian HMM
+
+↓
+
+Sticky HMM
+
+↓
+
+HDP-HMM
+```
+
+Input
+
+```
+Returns
+
+Volatility
+
+Features
+```
+
+Output
+
+```
+Bull
+
+Bear
+
+Crash
+
+Recovery
+```
+
+---
+
+# Phase 5 — Decision Layer
+
+Now
+
+```
+Bandits
+```
+
+Input
+
+```
+Volatility
+
+Regime
+
+Momentum
+
+Rolling Vol
+
+Drawdown
+```
+
+Output
+
+```
+Choose Strategy
+```
+
+Strategies
+
+```
+Momentum
+
+Mean Reversion
+
+Buy Hold
+
+Risk Parity
+
+Kelly
+```
+
+---
+
+# Phase 6 — Portfolio Layer
+
+Implement
+
+```
+Mean Variance
+
+Risk Parity
+
+Kelly
+
+Black Litterman
+```
+
+Input
+
+```
+Expected Return
+
+Covariance
+
+Strategy
+```
+
+Output
+
+```
+Portfolio Weights
+```
+
+---
+
+# Phase 7 — Execution Layer
+
+Now
+
+```
+Backtesting
+```
+
+Implement
+
+```
+Broker
+
+Orders
+
+Positions
+
+Portfolio
+
+Cash
+
+Transaction Costs
+```
+
+Now your strategy can actually trade.
+
+---
+
+# Phase 8 — Evaluation
+
+Compute
+
+```
+Sharpe
+
+Sortino
+
+Drawdown
+
+VaR
+
+CVaR
+
+RMSE
+
+ESS
+```
+
+Everything gets stored inside
+
+```
+outputs/
+```
+
+---
+
+# Phase 9 — Visualization
+
+Create
+
+```
+Price Plot
+
+Volatility Plot
+
+Particle Plot
+
+Posterior Plot
+
+Regime Plot
+
+Equity Curve
+
+Portfolio Allocation
+
+Drawdown
+```
+
+---
+
+# Phase 10 — Pipeline
+
+Now write
+
+```
+run_pipeline.py
+```
+
+Flow
+
+```
+Download Data
+
+↓
+
+Clean Data
+
+↓
+
+Returns
+
+↓
+
+Models
+
+↓
+
+Particle Filter
+
+↓
+
+PMMH
+
+↓
+
+Regimes
+
+↓
+
+Bandits
+
+↓
+
+Portfolio
+
+↓
+
+Backtest
+
+↓
+
+Evaluation
+
+↓
+
+Visualization
+
+↓
+
+Report
+```
+
+---
+
+# Where do configs come in?
+
+This is the part I would do **differently** from what you suggested.
+
+I **wouldn't** start by filling in every YAML file.
+
+Instead:
+
+1. Create the YAML files now (empty or minimal).
+    
+2. Ignore them while writing the first version of each module.
+    
+3. Once a module works, move its hardcoded parameters into the corresponding config file.
+    
+
+For example, don't start with:
+
+```yaml
+particle_filter:
+  particles: 5000
+  resampling: systematic
+  ess_threshold: 0.5
+```
+
+Instead, write the particle filter first:
+
+```python
+pf = ParticleFilter(
+    num_particles=1000,
+    resampling="systematic",
+)
+```
+
+Once you're happy with it, refactor it to:
+
+```python
+cfg = load_config("particle_filter.yaml")
+pf = ParticleFilter(**cfg)
+```
+
+This avoids spending hours designing configuration before you know what the code actually needs.
+
+---
+
+# This is the order I would personally follow
+
+```
+Repository Setup
+        │
+        ▼
+Data Pipeline
+        │
+        ▼
+Financial Features
+        │
+        ▼
+Market Simulators
+        │
+        ▼
+State Space Models
+        │
+        ▼
+Kalman Filters
+        │
+        ▼
+Particle Filters
+        │
+        ▼
+PMMH
+        │
+        ▼
+Regime Detection
+        │
+        ▼
+Bandits
+        │
+        ▼
+Portfolio Optimization
+        │
+        ▼
+Backtesting
+        │
+        ▼
+Evaluation
+        │
+        ▼
+Visualization
+        │
+        ▼
+Configuration Refactoring
+        │
+        ▼
+Pipeline Automation
+        │
+        ▼
+Documentation & README
+```
+
+I think this order is much more realistic because **every new layer has something concrete to consume**. You're never writing algorithms in isolation—they always plug into the layer beneath them. By the time you reach `run_pipeline.py`, you're simply connecting components that already work, rather than trying to invent the whole architecture at once. That tends to produce a much more maintainable research codebase.
+
+
+
+phase 1 
+
+loader.py
+        ↓
+preprocessing.py
+        ↓
+returns.py
+        ↓
+simulation.py
+        ↓
+download_data.py
+        ↓
+generate_synthetic_data.py
+
